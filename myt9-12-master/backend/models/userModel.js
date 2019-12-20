@@ -1,6 +1,6 @@
-const mongoose = require('mongoose'); const bcrypt = require('bcrypt-nodejs');
+const mongoose = require('mongoose');
 
-const citySchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     userName: {
         type: String,
         
@@ -22,13 +22,13 @@ const citySchema = new mongoose.Schema({
 
   })
 
-   userSchema.methods.encryptPassword = (password) => {
-     return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-   },
+  //  userSchema.methods.encryptPassword = (password) => {
+  //    return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+  //  },
 
-   userSchema.methods.comparePassword = function (password) {
-     return bcrypt.compareSync(password, this.password);
+  //  userSchema.methods.comparePassword = function (password) {
+  //    return bcrypt.compareSync(password, this.password);
 
-  },
+  // },
 
-module.exports = mongoose.model('users', citySchema)
+module.exports = mongoose.model('usuarios', userSchema)

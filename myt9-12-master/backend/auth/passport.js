@@ -1,26 +1,26 @@
-const passport = require ('passport'), 
-const LocalStrategy = require('passport-local').Strategy;
+const passportJwt = require("passport-jwt");
+const JwtStrategy = passportJwt.Strategy
+const ExtractJwt = passportJwt.ExtractJwt;
+// require('passport-jwt').ExtractJwt; 
 
-passport.serializeUser((user, done) => { 
- done(null, user.id) 
+const passport = require('passport');
+var usuarioModel = require('../models/userModel');
+// const key = require('./secretKey');
 
-});
+const opts={};
+opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+opts.secretOrKey = "secret";
 
-passport.deserializeUser(async (id, done) => { 
-   const user= await User.findById(id);
-   done(null, user);
-  
- });
+module.exports = passport.use(
 
-passport.use('local-signup', new LocalStrategy ({
-  usernameField: 'email',
-  passwordField: 'password',
-  passReqToCallback: true
-}, async (req, email, password, done) => {
-  const user = new User();
-  user.email = email;
-  user.password = password;
-  await user.save();
-  done (null, user);
-
-})) 
+    new JwtStrategy("secret", (jwt_payload, done) => {
+        usuarioModel.findById(jwt_payload.id)
+            .then(user => {
+                if (user) {
+                    return done(null, user);
+                }
+                return done(null, false);
+            })
+            .catch(err => console.log(err));
+    })
+);

@@ -32,4 +32,6 @@ router.get('/:title',
 			.catch(err => console.log(err));
 });
 
+
+
 module.exports = router;

@@ -25,12 +25,12 @@ class StarBrowsing extends React.Component {
   }
 }
 
-class Login extends React.Component {
+class CreateAccount extends React.Component {
   render(){
     return (
       <React.Fragment>
        
-       <Button variant="primary"> <Link to="/Create">Create Account</Link> </Button> &nbsp;&nbsp;&nbsp;
+       <Button variant="primary"> <Link to="/CreateAccount">Create Account</Link> </Button> &nbsp;&nbsp;&nbsp;
             
       </React.Fragment>
     )
@@ -38,7 +38,7 @@ class Login extends React.Component {
   }
 }
 
-class Create extends React.Component {
+class Login extends React.Component {
   render(){
     return (
       <React.Fragment>
@@ -55,7 +55,7 @@ class Container extends React.Component {
       <div>
         <StarBrowsing/>
         <Login/>
-        <Create/>
+        <CreateAccount/>
       </div>
     );
   }

@@ -4,7 +4,7 @@ mongoose.connect(URI, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
-    secretOrKey: "secret"
+    // secretOrKey: "secret"
 
 
 } )

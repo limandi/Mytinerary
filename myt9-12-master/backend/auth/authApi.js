@@ -7,7 +7,7 @@ var usuarioModel=require('../models/userModel');
 
 
 router.post('/login', function (req, res) {
-  usuarioModel.findOne({ username: req.body.username })
+  usuarioModel.findOne({ userName: req.body.userName })
       .then(user => {
 
 
@@ -18,7 +18,7 @@ router.post('/login', function (req, res) {
           if (user.password === req.body.password) {
               const payload = {
                   id: user._id,
-                  userName: user.username,
+                  userName: user.userName,
                   // avatarPicture: user.avatarPicture
               };
               const options = { expiresIn: 2592000 };

@@ -16,7 +16,7 @@ class Cities extends Component {
     
 
      componentDidMount() {
-        // fetch('http://localhost:4000/cities/all')
+        //  fetch('http://localhost:4000/cities/all')
          this.props.getCities();
      }
 
@@ -24,7 +24,7 @@ class Cities extends Component {
         var lista= this.props.listaCiudades.cities;
         console.log(lista);
         if(!lista) return <p> ("loading") </p>
-        console.log(lista)
+        
         return ( 
           
             <div className= "container cities">
